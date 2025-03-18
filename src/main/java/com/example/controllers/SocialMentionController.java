@@ -2,6 +2,8 @@ package com.example.controllers;
 
 import com.example.dtos.SocialMention;
 import com.example.services.DBService;
+import com.example.services.FacebookAnalyzerService;
+import com.example.services.TweeterAnalyzerService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -10,9 +12,13 @@ import io.micronaut.http.annotation.Produces;
 
 @Controller
 public class SocialMentionController {
+
     public static final String ANALYZED_TWEETS_TABLE = "analyzed_tweets";
     public static final String ANALYZED_FB_TABLE = "analyzed_fb_posts";
     private DBService dbService = new DBService("localhost", 5432); // database host and port
+    private FacebookAnalyzerService FacebookAnalyzer = new FacebookAnalyzerService();
+    private TweeterAnalyzerService TweeterAnalyzer = new TweeterAnalyzerService();
+
     @Post("/AnalyzeSocialMention")
     @Produces(MediaType.TEXT_PLAIN)
     public String analyze(@Body SocialMention socialMention) {
