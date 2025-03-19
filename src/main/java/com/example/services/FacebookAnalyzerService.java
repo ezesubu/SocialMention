@@ -6,7 +6,7 @@ import jakarta.inject.Singleton;
 public class FacebookAnalyzerService {
 
     public double calculateFacebookCommentsScore(String comments) {
-        return comments.length() > 100 ? 30d : 10d;
+        return comments.length() > 50 ? 60d : 10d;
     }
 
     public double analyzePost(String message, String facebookAccount) {
