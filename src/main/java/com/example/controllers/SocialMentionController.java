@@ -4,6 +4,7 @@ import com.example.dtos.SocialMention;
 import com.example.services.DBService;
 import com.example.services.FacebookAnalyzerService;
 import com.example.services.TweeterAnalyzerService;
+import com.example.services.impl.PostgresDBService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -15,7 +16,7 @@ public class SocialMentionController {
 
     public static final String ANALYZED_TWEETS_TABLE = "analyzed_tweets";
     public static final String ANALYZED_FB_TABLE = "analyzed_fb_posts";
-    private DBService dbService = new DBService("localhost", 5432); // database host and port
+    private PostgresDBService dbService = new PostgresDBService("localhost", 5432); // database host and port
     private FacebookAnalyzerService FacebookAnalyzer = new FacebookAnalyzerService();
     private TweeterAnalyzerService TweeterAnalyzer = new TweeterAnalyzerService();
 
