@@ -126,10 +126,9 @@ Puedes ejecutar las pruebas con:
 ```bash
 ./gradlew test
 ```
-
-## 7. Futuras Mejoras
-- Implementar integración con PostgreSQL para almacenar resultados de análisis.
-- Mejorar los criterios de análisis de riesgo.
-- Implementar autenticación y autorización.
+## 7. Malas Prácticas en `SocialMentionController`
+- **Acoplamiento Fuerte:** Las instancias de `PostgresDBService`, `FacebookAnalyzerService` y `TweeterAnalyzerService` se crean dentro del controlador en lugar de inyectarse, dificultando pruebas y mantenimiento.
+- **Condiciones Complejas:** Uso excesivo de `if` anidados que hacen difícil la lectura y mantenimiento.
+- **Duplicación de Lógica:** Se repiten fragmentos de código para calcular puntajes y manejar mensajes en Facebook y Twitter.
 
 ---
